@@ -1,5 +1,6 @@
 Using PageObject pattern
 
 steps to perform:
-//d
+
+0. npm install 
 1. npx cypress open
