@@ -42,12 +42,12 @@ class SignInPage {
 
     validate_urls(url) {
       cy.url().should('include', '/index.php?controller=my-account') 
-      cy.url().should('eq', 'http://automationpractice.com/index.php?controller=my-account')
+      cy.url().should('eq', Cypress.env('url_after_login'))
     }
 
     logout() {
       cy.get('.logout').click()
-      cy.url().should('eq', 'http://automationpractice.com/index.php?controller=authentication&back=my-account')
+      cy.url().should('eq', Cypress.env('url_after_logout'))
     }
 
     validate_location(url) {

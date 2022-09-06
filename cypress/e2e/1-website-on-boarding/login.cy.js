@@ -18,9 +18,10 @@
     });
 
     it('should show an error message on empty input', () => {
+      const home_page_url = Cypress.env('home_page_url')
       const login_page = new SignInPage();
       login_page.visit();
-      login_page.validate_location("http://automationpractice.com/index.php")
+      login_page.validate_location(home_page_url)
       login_page.validate_title()
       
       login(Cypress.env("bad_user"), Cypress.env('bad_pass'))  
@@ -43,20 +44,20 @@
       const PASS = String(Cypress.env('password'))
       const login_page = new SignInPage();
       login_page.visit();
-      login_page.validate_location("http://automationpractice.com/index.php")
+      login_page.validate_location(Cypress.env('home_page_url'))
       login_page.validate_title()
       login(USERNAME, PASS)
       login_page.validate_home_icon()
       login_page.validate_urls()
       login_page.logout()
-      login_page.validate_location('http://automationpractice.com/index.php?controller=authentication&back=my-account')
+      login_page.validate_location(Cypress.env('url_after_logout'))
     });
 
     it('should go to women menu and add product to cart the good path', () => {
 
       const login_page = new SignInPage()
       login_page.visit();
-      login_page.validate_location("http://automationpractice.com/index.php")
+      login_page.validate_location(Cypress.env('home_page_url'))
       login_page.validate_title()
       login(Cypress.env('username'), Cypress.env('password'))
       login_page.validate_home_icon()
